@@ -12,6 +12,19 @@ public class Conn {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
         con= DriverManager.getConnection("jdbc:ucanaccess://"+url);
     }
+    private void delete(String schema, String condition){
+        String sql="DELETE FROM `"+schema+"` WHERE "+condition;
+        System.out.println(sql);
+        try{
+            Statement statement=con.createStatement();
+            if(statement.execute(sql)){
+                System.out.println("suc");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    //add student
     public void addStudent(int sid, String sname, String sex, int age, int year, double gpa){
         String sql="INSERT INTO `student` ([sid],[sname],[sex],[age],[year],[gpa])" +
                 " VALUES ("+sid+", '"+sname+"', '"+sex+"', "+age+", "+year+", "+gpa+")";
@@ -97,15 +110,24 @@ public class Conn {
             e.printStackTrace();
         }
     }//success but always slowly
+    //test delete
+    public static void testDelete(){
+        try{
+            new Conn().delete("student","sid=5000");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
     public static void main(String []args){
         //System.out.println("Hello world!");
         //testConn();
-        testAdd();
+        //testAdd();
         //System.out.println(randomName());
         /*
         for(int i=0;i<100;i++){
             System.out.println(randomGpa());
         }*/
         //add25000();
+        testDelete();
     }
 }
