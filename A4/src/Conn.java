@@ -102,7 +102,7 @@ public class Conn {
     }
     public static void testDeleteStudent(){
         try{
-            new Conn().deleteStudent("sid=5000");
+            new Conn().deleteStudent("sid=6000");
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -120,7 +120,7 @@ public class Conn {
     }
     public static void testUpdateStudent(){
         try{
-            new Conn().updateStudent("year=8", "sname='Fred, W.'");
+            new Conn().updateStudent("year=8", "sname='xxx'");
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
